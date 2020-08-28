@@ -43,6 +43,12 @@ Creating the link for the version 7:
 $ sudo ln /usr/lib/cuda/lib64/libcudnn.so /usr/lib/cuda/lib64/libcudnn.so.7
 ```
 
+Add these two lines to your `.bashrc` (or just execute them manually everytime).
+```
+export LD_LIBRARY_PATH=/usr/lib/cuda/lib64:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/usr/lib/cuda/include:$LD_LIBRARY_PATH
+```
+
 ## Long Story
 
 It started with this error from tensorflow:
@@ -151,6 +157,13 @@ So I created a link for the shared object of version 7:
 $ sudo ln /usr/lib/cuda/lib64/libcudnn.so /usr/lib/cuda/lib64/libcudnn.so.7
 ```
 > NOTE: This worked for me, but if you want to go a bit more by the book, I'd suggest using `cuDNN` 7 just to be sure.
+
+Each user need to add these two lines to their `.bashrc` (or `.zshrc`).
+```
+export LD_LIBRARY_PATH=/usr/lib/cuda/lib64:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/usr/lib/cuda/include:$LD_LIBRARY_PATH
+```
+> Note: Alternatively you can execute them manually each time you need cuDNN for Tensorflow.
 
 After this Tensorflow 2 worked smoothly on GPU. You should get an output similar to this, when executing Tensorflow 2:
 
